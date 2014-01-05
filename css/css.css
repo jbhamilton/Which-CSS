@@ -1,0 +1,107 @@
+body,html,p,span,ul,li,ol,div,br,h1,h2,h3,h4,h5,h6 {
+padding:0;
+margin:0;
+list-style:none;
+}
+
+
+body {
+width:80%;
+margin:0% 10%;
+}
+.imageWrap {
+width:100%;
+position:relative;
+display:block;
+}
+#left-page {
+position:absolute;
+top:0;
+}
+
+#right-page {
+position:relative;
+padding-top:25px;
+}
+
+#legend {
+text-align:right;
+margin:25px 0px 0px 0px;
+}
+#legend > div {
+display:inline-block;
+}
+#not-used {
+width:15px;
+height:15px;
+background-color:#BA1B10;
+}
+#used {
+width:15px;
+height:15px;
+background-color:#7ED9B6;
+}
+
+#files {
+width:25%;
+float:left;
+}
+#content {
+width:75%;
+float:left;
+}
+
+#files > div {
+margin-bottom:25px;
+}
+
+#files > .active {
+border-left:5px solid #2D9493;
+padding-left:15px;
+}
+#files .imageWrap img {
+width:45px;
+height:auto;
+}
+
+.css-index {
+display:none;
+}
+.css-index.active {
+display:block;
+}
+
+
+.pages {
+display:none;
+}
+
+ul.tags {
+background-color:rgba(10,10,10,0.8);
+}
+ul.tags li {
+padding:6px;
+display:inline-block;
+}
+ul.tags li.True {
+color:#7ED9B6;
+}
+ul.tags li.False {
+color:#BA1B10;
+}
+
+.properties {
+margin:15px 0px 25px 0px;
+padding:0px 0px 25px 15px;
+border-bottom:1px solid rgba(220,220,220,0.8);
+}
+
+#pop-message {
+   position:static;
+   width:100%;
+   height:100%;
+   text-align:center;
+}
+#pop-message > div {
+
+}

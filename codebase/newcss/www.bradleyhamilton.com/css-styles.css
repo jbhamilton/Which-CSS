@@ -1,0 +1,188 @@
+a {
+text-decoration:none;
+} 
+p {
+font-size:12px;
+} 
+a {
+color:#333333;
+} 
+h1,h2,h3,h4 {
+color:#990000;
+} 
+body {
+border-top:7px solid #990000;
+background:none repeat scroll 0 0 #ffffff;
+} 
+.header {
+padding-top:2%;
+padding-bottom:3%;
+} 
+.hTop {
+padding-bottom:3%;
+} 
+.menu div {
+display:none;
+height:30px;
+} 
+.menu p {
+color:#ffffff;
+font-size:22px;
+text-align:center;
+background:none repeat scroll 0 0 #990000;
+} 
+.menu p:hover {
+background:none repeat scroll 0 0 #ffffff;
+color:#990000;
+} 
+.title {
+font-size:30px;
+color:#990000;
+border-bottom:1px solid #5c173e;
+} 
+.title1 {
+font-size:16px;
+color:#990000;
+border-bottom:1px solid #5c173e;
+} 
+.headline {
+font-size:18px;
+padding-top:5%;
+} 
+.gutInfoCol {
+display:none;
+padding-top:15px;
+padding-right:10px;
+padding-left:10px;
+} 
+.gutInfoCol p {
+padding-bottom:10px;
+} 
+.quote {
+padding-top:10px;
+padding-bottom:10px;
+margin-bottom:10px;
+border-top:1px solid #5c173e;
+border-bottom:1px solid #5c173e;
+background:none repeat scroll 0 0 #EAECEA;
+padding-left:10px;
+} 
+.quote p {
+padding-bottom:0px;
+} 
+.author {
+text-align:right;
+padding-right:30px;
+} 
+ul.skills {
+padding-bottom:15px;
+} 
+.skills li {
+list-style:none;
+font-size:12px;
+border:1px solid #5c173e;
+border-top:none;
+border-right:none;
+border-left:none;
+padding:10px;
+} 
+.skills li:first-child {
+border-top:1px solid #5c173e;
+} 
+.skillTitle {
+cursor:pointer;
+} 
+.skillTitle span {
+float:right;
+} 
+.skillTitle span img {
+width:10px;
+} 
+.skillInfo {
+display:none;
+margin-top:10px;
+} 
+.curProject {
+margin-bottom:20px;
+border-bottom:1px solid #5c173e;
+} 
+.curProject p:first-child {
+font-size:16px;
+} 
+.gutInfoProject p:first-child {
+font-size:18px;
+font-weight:bold;
+} 
+.gutInfoProject p:first-child a {
+color:#15848F;
+} 
+.gutInfoProject p {
+margin:0px 10px 5px 10px;
+} 
+.site {
+margin-right:10%;
+margin-left:10%;
+width:80;
+display:block;
+border-bottom:2px solid #990000;
+padding-bottom:25px;
+} 
+.site img {
+position:relative;
+left:50%;
+margin-top:10px;
+} 
+#wlIMG {
+margin-left:-115px;
+width:173px;
+} 
+#openleafIMG {
+margin-left:-230px;
+width:460px;
+} 
+#oarIMG {
+margin-left:-125px;
+width:250px;
+} 
+#smIMG {
+margin-left:-125px;
+width:250px;
+} 
+#wktrIMG {
+width:700px;
+margin-left:-350px;
+} 
+#tvrIMG {
+width:600px;
+margin-left:-300px;
+} 
+.heading {
+font-size:16px;
+padding:10px 0px 5px 0px;
+} 
+#contactGut div {
+margin-left:10%;
+margin-right:10%;
+width:80%;
+text-align:center;
+padding:10px 0px 10px 0px;
+} 
+#contactGut img {
+margin-left:0;
+margin-right:0;
+} 
+#linked-in {
+width:auto;
+height:125px;
+} 
+.entry-content ul {
+padding:10px 10px 20px 10px;
+} 
+.entry-content ul li {
+font-size:12px;
+list-style:none;
+padding-top:10px;
+} 
+footer.entry-meta {
+margin-top:25px;
+} 
