@@ -22,44 +22,113 @@ class HtmlPage:
         self.html = Soup(urllib.urlopen('http://'+urlHostName+self.url))
         self.styles = select(self.html,'link[rel="stylesheet"]')
         self.links = select(self.html,'a')
+        self.jScripts = select(self.html,'script[type="text/javascript"]')
 
         self.links = self.listToLocalOnly(self.links)
         self.styles = self.listToLocalOnly(self.styles)
+        self.jScripts = self.listToLocalOnly(self.jScripts)
 
         print 'Parsing page ',vurl,' with ID of: ',ID
         print 'Page has ',len(self.links),' links'
-        #print self.links
         print '-'*30
 
 
     def listToLocalOnly(self,list):
         newList = []
         for l in list:
-            urlParts = urlparse(l['href'])
-            #print l['href']
-            #print urlParts
+            try:
+                urlParts = urlparse(l['href'])
+            except KeyError:
+                urlParts = urlparse(l['src'])
+
+
             q = ''
             if urlParts.query!='':
                 q = '?'+urlParts.query
 
-            if urlParts.hostname == urlHostName or urlParts.hostname==None:
-                if urlParts.path.find('/')==-1:
-                    pos = self.url.rfind('/')
-                    if pos==-1:
-                        nurl = self.url+'/'
-                    else:
-                        nurl = self.url[0:pos+1]
-                    newList.append(nurl+urlParts.path+q)
-                if urlParts.hostname==None:
-                    i = (urlParts.path).find('/')
-                    newList.append(urlParts.path[i:]+q)
-                else :
+            if urlParts.hostname == urlHostName or urlParts.hostname==None or urlParts.hostname=='':
+
+                baseParts = urlparse(self.url)
+
+                firstChar = urlParts.path[0:1]
+                firstTwoChar = urlParts.path[0:2]
+                
+                lasPos = baseParts.path.rfind('/')
+                if lasPos == -1:
+                    lasPos = len(baseParts.path) 
+                else:
+                    lasPos+=1
+                
+                base = baseParts.path[0:lasPos]
+                
+                
+                if firstChar=='/':
                     newList.append(urlParts.path+q)
+                elif re.search('[a-zA-Z0-9\-]',firstChar):
+                    newList.append(base+urlParts.path)
+                elif firstTwoChar=='./':
+                    newList.append(base+urlParts.path[2:])
+                elif firstTwoChar=='..':
+                    c = urlParts.path.count('../')
+                    base = base[0:len(base)-1]
+                
+                    for i in range(c):
+                        base = base[0:base.rfind('/')]
+                
+                    base+='/'
+                
+                    newList.append(base+urlParts.path[c*3:])
     
         return newList
 
 
+class jScriptFile:
 
+    def __init__(self,path):
+        self.url = path
+        self.sourceCode = urllib.urlopen('http://'+urlHostName+path).read()
+
+        self.strings = self.getStrings()
+
+    def getStrings(self):
+        
+        pattern1 = re.compile('\"+([a-zA-Z0-9\-\_\s\'\<\=\>\/\.]+)\"+')
+        pattern2 = re.compile('\'+([a-zA-Z0-9\-\_\s\"\<\=\>\/\.]+)\'+')
+        
+
+        matches1 = list(pattern1.finditer(self.sourceCode))
+        matches2 = list(pattern2.finditer(self.sourceCode))
+        
+        
+        matches1.extend(matches2);
+        
+        
+        matches1.sort(key=lambda x: x.start())
+        
+        presoup = [m.group(0) for m in matches1]
+        presoup = ' '.join(presoup)
+        
+        return Soup(presoup)
+
+
+    def findString(self,string):
+        if string =='' or string==None:
+            return False
+
+        badPsuedos = [':active',':link',':visited',':hover',':focus',':first-letter',':first-line',':first-child',
+                ':before',':after',':first-of-type',':last-of-type',':only-of-type',':only-child',':last-child',':empty',]
+                
+        for b in badPsuedos:
+            if b in string:
+                string.replace(b,'')
+
+        try:
+            r = select(self.strings,string)
+            return r
+        except IndexError as e:
+            print e
+            print string
+            return False
 
 
 
@@ -70,6 +139,11 @@ class CssFile:
         self.pageObjects = []
         self.tagObjects = []
         self.css = self.getCssFile()
+        self.fileExists = True
+
+        if re.search('<\/.{1,25}>',self.css):
+            self.fileExists = False
+
 
     def getCssFile(self):
         url = 'http://'+urlHostName+self.path
@@ -102,37 +176,53 @@ class CssFile:
                     tag.found = True
                     continue
 
-                print 'finding matches for :',t
+                #print 'finding matches for :',t
                 matches = []
                 try:
                     matches = select(html,t)
                 except IndexError as e:
-                    print 'Error finding matches',e
+                    #print 'Error finding matches',e
                     tag.found = True
                     tag.tagsFound[i] = True 
 
                 if len(matches)>0:
                     tag.found = True
                     tag.tagsFound[i] = True 
-                    print 'Found Match(s)'
+                    #print 'Found Match(s)'
                 else:
-                    print 'No Match!'
+                    pass
+                    #print 'No Match!'
 
     def createNewCssFile(self):
-        fo = open(filePath+urlHostName+'/'+((self.path).replace('/','-')[1:]),'wb')
+        if not self.fileExists:
+            return
+
+        foundFile = ''
+        notFoundFile = ''
         for tag in self.tagObjects:
-            if len(tag.tags)==0 or not tag.found:
+            if len(tag.tags)==0:
                 continue
 
-            fo.write(','.join(tag.tags)+' {\n')
+            tags = ','.join(tag.tags)+' {\n'
 
             props = ''
             for p in tag.properties.declarations:
                 props+=str(p.name)+':'+str(p.value.as_css())+';\n'
             props+='} \n'
 
-            fo.write(props)
+            if tag.found:
+                foundFile+=tags+props 
+            else:
+                notFoundFile+=tags+props
 
+        #write out the found css properties
+        fo = open(filePath+urlHostName+'/'+((self.path).replace('/','-')[1:]),'wb')
+        fo.write(foundFile)
+        fo.close()
+
+        #write out the not found css properties
+        fo = open(filePath+urlHostName+'/notfound.'+((self.path).replace('/','-')[1:]),'wb')
+        fo.write(notFoundFile)
         fo.close()
 
 
@@ -142,6 +232,8 @@ class Tag:
         self.found = False
         self.tags = []
         self.tagsFound = []
+        self.foundInScript = []
+        self.scriptNames = []
         self.properties = rule
         if rule.at_keyword  == '@media':
             self.found = True
@@ -166,7 +258,10 @@ class Tag:
         infohtml = '<li class="{}">{}</li>' 
         if len(self.tags)>1:
             for i,t in enumerate(self.tags):
-                info+= infohtml.format(str(self.tagsFound[i]),str(t))
+                fType = ''
+                if i in self.foundInScript:
+                    fType = '<span class="foundInScript" title="'+self.scriptNames[self.foundInScript.index(i)]+'">*</span>'
+                info+= infohtml.format(str(self.tagsFound[i]),fType+str(t))
         else:
             info+= infohtml.format(str(self.found),str(self.tags[0]))
 

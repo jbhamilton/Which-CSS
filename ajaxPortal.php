@@ -13,7 +13,8 @@ if(isset($_POST['url'])){
 
 }//if
 else if(isset($_GET['checkIfRan'])){
-    if(is_dir($tidyPath.'newcss/'.$_GET['url'])){
+    $baseName = parse_url($_GET['url'])['host'];
+    if(is_dir($tidyPath.'newcss/'.$baseName)){
         echo '1';
     }//if
     else {
@@ -22,6 +23,7 @@ else if(isset($_GET['checkIfRan'])){
 }//elif
 
 function run(){
+    global $tidyPath;
     $args =  $_POST['url'];
     if(isset($_POST['stylesheet'])){
         $args.=' '.$_POST['stylesheet'];
@@ -35,8 +37,17 @@ function run(){
 }//run
 
 function printOutput(){
+    global $tidyPath;
     $baseName = parse_url($_POST['url'])['host']; 
-    echo file_get_contents("{$tidyPath}newcss/{$baseName}/output.html");
+    $filePath = "{$tidyPath}newcss/{$baseName}/output.html";
+
+
+    if(is_file($filePath)){
+        echo file_get_contents($filePath);
+    }//if 
+    else {
+        echo '<h3>Problem reading output file<h3><p>Please re-run tidy to fix</p>';
+    }//el
 }//printOutput
 
 

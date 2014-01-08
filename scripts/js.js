@@ -16,7 +16,7 @@ var form = {
         $('body').on('click','#submit-tidy',function(){
 
             tidyUrl = $("input[name='url']").val();
-            //form.request();
+            $('#submit-tidy').hide();
             form.checkRunStatus();
         });
     }(),//listen
@@ -30,7 +30,8 @@ var form = {
                     +'<div>'
                         +'<p>It appears you have already done a tidy of your css</p>'
                         +'<p>Would you like to view the past results or do a re-run?</p>'
-                        +'<div onclick="form.request("run")">Re-run</div onclick="form.request()"><div>View old</div>'
+                        +'<div onclick="form.request(\'run\')">Re-run</div>'
+                        +'<div onclick="form.request()">View old</div>'
                     +'</div>'
                 +'</div>';
                     
@@ -38,7 +39,7 @@ var form = {
                     form.request('run');
                 }//if
                 else {
-                    $('body').append(fhtml);
+                    $('#do-tidy').after(fhtml);
                 }//el
             }
         });
@@ -47,19 +48,27 @@ var form = {
     request: function(type){
         type = type || "";
 
+        $('#pop-message').remove();
+        $('#results').html('<div id="loading-wrapper"><img src="/images/loading.gif"/></div>');
+
         $.ajax({
             url:endPoint+'ajaxPortal.php?'+type,
             type:'POST',
             data:$('#do-tidy').serialize(),
             success: function(data){
-                $('#results').append(data);
+                $('#results').html(data);
                 $('.css-index').eq(0).addClass('active');
                 $('#files > div').eq(0).addClass('active');
 
                 $('#files > div').each(function(){
-                    var n  = $(this).children('p').eq(0);
-                    var link = '<a target="_blank" href="getFile.php?url='+tidyUrl+'&file='+($(n).text()).replace('/','-')+'">';
-                    //$(n).after(link+'<div class="imageWrap"><img src="images/css.png"/></div></a>');
+                    var n  = $(this).children('p').eq(0).text();
+                    n = n.split('/').join('-');
+                    n = n.substr(1,n.length);
+                    var link = '<a target="_blank" href="'+endPoint+'getFile.php?url='+tidyUrl+'&file='+n+'"></a>';
+                    var nfLink = '<a target="_blank" href="'+endPoint+'getFile.php?url='+tidyUrl+'&file=notfound.'+n+'"></a>';
+                    $(this).children('.imageWrap').eq(0).children('img').wrap(link);
+                    $(this).children('.imageWrap').eq(1).children('img').wrap(nfLink);
+                    $('#submit-tidy').show();
                 });
             }
         });
@@ -68,7 +77,7 @@ var form = {
 }
 
 $('body').on('click','.view-pages',function(){
-    $('.pages').toggle();
+    $(this).parent().children('.pages').toggle();
 });
 
 var file = {

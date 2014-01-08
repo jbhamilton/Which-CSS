@@ -12,6 +12,8 @@ pageObjects = []
 pagesVisited = []
 cssVisited = []
 cssObjects = []
+jScriptObjects = []
+jScriptVisited = []
 
 # obtain the url from args that we need to parse
 try:
@@ -29,6 +31,9 @@ except IndexError:
 urlParts = urlparse(url)
 # set the base hostname in the HtmlPage module
 HtmlPage.setHostName(urlParts.hostname,filePath)
+
+#make the directory for the site
+#if it doesn't exist
 mdir = filePath+urlParts.hostname
 if not os.path.exists(mdir):
     os.makedirs(mdir)
@@ -81,11 +86,14 @@ while i < len(pageObjects):
 
     i+= 1
 
-# go get all the css files on the website
-# and create a list of all the pages that use them
+#exception for handling only a user specified stylesheet
 class BreakTheLoops(BaseException): pass
+
 try:
     for i,page in enumerate(pageObjects):
+
+        # go get all the css files on the website
+        # and create a list of all the pages that use them
         for style in page.styles:
             if style.find('/')==-1 or style == '' or style == None:
                 continue
@@ -108,20 +116,52 @@ try:
 except BreakTheLoops:
     pass
 
+#go get all the javascript files on the site
+for i,page in enumerate(pageObjects):
+    for script in page.jScripts:
+        if not script in jScriptVisited:
+            try:
+                print 'Getting JavaScript file '+script
+                jScriptObjects.append(HtmlPage.jScriptFile(script))
+                jScriptVisited.append(script)
+            except IOError:
+                print 'dead jScript link'
+
 
 parser = CSS21Parser()
-
+#for each style sheet create a manipulatable object of the 
+#   style sheet using tinycss class
 for css in cssObjects:
     try:
-        #css.buildCssObject(parser.parse_stylesheet(unicode(css.css,'utf-8')))
         css.buildCssObject(parser.parse_stylesheet(css.css))
+        #for each page associated with the css
         for page in css.pageObjects:
+            #see if the css properities exist on the page
             css.verifyHtml(page.html) 
     except UnicodeDecodeError as e:
         print 'unicode decode error found'
         print '@ file with path: ',css.path
         print e 
         
+#go verify unfound css properties don't exist in the javascript files
+for css in cssObjects:
+    for t in css.tagObjects:
+        for i,tf in enumerate(t.tagsFound):
+            #if the tag isn't found
+            if not tf:
+                #get the property
+                string = t.tags[i]
+
+                #look through the javascript
+                for s in jScriptObjects:
+                    if s.findString(string):
+                        t.foundInScript.append(i)
+                        t.scriptNames.append(s.url)
+                        t.tagsFound[i]=True
+                        break;
+
+
+
 
 PagePrinter.cssInfoDump(cssObjects,urlParts,filePath)
 
