@@ -39,7 +39,7 @@ var form = {
                     form.request('run');
                 }//if
                 else {
-                    $('#do-tidy').after(fhtml);
+                    $('#body').prepend(fhtml);
                 }//el
             }
         });

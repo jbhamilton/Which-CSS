@@ -1,0 +1,21 @@
+figure {
+position:relative;
+} 
+figure img {
+width:100%;
+} 
+.row .onecol {
+width:4.85%;
+} 
+.row .fivecol {
+width:39.45%;
+} 
+.row .sevencol {
+width:56.75%;
+} 
+.row .ninecol {
+width:74.05%;
+} 
+.row .elevencol {
+width:91.35%;
+} 

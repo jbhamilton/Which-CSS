@@ -89,7 +89,20 @@ class templateControl {
         
         $nav = "
             <div id='left-page'>
-                <h1>TidyMyCss</h1>
+                <div class='logoHolder'>
+                    <img src='{$this->path}images/logo.png' alt='Which Css'/>
+                </div>
+
+                <form id='do-tidy'>
+                    <label>URL</label>
+                    <input type='text' length='200' name='url'>
+                    <label>Only do a specific style sheet (optional)</label>
+                    <input type='text' length='200' name='stylesheet'>
+                    <div id='submit-tidy'><div>Tidy</div></div>
+                </form>
+
+                <div class='clear'></div>
+
             </div>
 
             <script type='text/javascript' src='%1\$sscripts/js.js'></script>
@@ -119,6 +132,7 @@ class templateControl {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link type="image/x-icon" href="{$this->path}waveleak_favicon.png" rel="shortcut icon">
+        <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
         

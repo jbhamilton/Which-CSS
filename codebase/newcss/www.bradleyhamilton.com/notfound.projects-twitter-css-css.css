@@ -1,0 +1,233 @@
+text {
+font-size:12px;
+} 
+div.ui-datepicker {
+font-size:10px;
+} 
+#ptTimeSelectCntr {
+font-size:10px;
+} 
+#errorMessage {
+margin-top:25%;
+} 
+#closePopUp {
+margin:10px;
+} 
+#closePopUp span {
+cursor:pointer;
+margin:5px;
+padding:6px;
+color:#FFFFFF;
+-moz-border-radius:8px 8px 8px 8px;
+-webkit-border-radius:8px 8px 8px 8px;
+border-radius:8px 8px 8px 8px;
+-khtml-border-radius:8px 8px 8px 8px;
+} 
+.popup {
+border:2px solid #306999;
+box-shadow:3px 3px 5px 1px #000;
+-moz-box-shadow:3px 3px 5px 1px #000;
+-webkit-box-shadow:3px 3px 5px 1px #000;
+-moz-border-radius:8px 8px 8px 8px;
+-webkit-border-radius:8px 8px 8px 8px;
+border-radius:8px 8px 8px 8px;
+-khtml-border-radius:8px 8px 8px 8px;
+font-size:14px;
+position:absolute;
+top:-120px;
+left:0px;
+height:100px;
+width:150px;
+display:none;
+color:#ffffff;
+z-index:25;
+} 
+.popup1 {
+border:2px solid #306999;
+background-color:#ffffff;
+box-shadow:3px 3px 5px 1px #000;
+-moz-box-shadow:3px 3px 5px 1px #000;
+-webkit-box-shadow:3px 3px 5px 1px #000;
+-moz-border-radius:8px 8px 8px 8px;
+-webkit-border-radius:8px 8px 8px 8px;
+border-radius:8px 8px 8px 8px;
+-khtml-border-radius:8px 8px 8px 8px;
+font-size:14px;
+position:absolute;
+top:-200px;
+left:0px;
+height:400px;
+width:800px;
+display:none;
+color:#ffffff;
+z-index:25;
+} 
+.popupTag {
+font-size:16px;
+border-bottom:2px solid #ffffff;
+padding:5px 0px 0px 5px;
+margin-bottom:5px;
+width:95%;
+} 
+.singleTagInfo {
+position:relative;
+color:#306999;
+cursor:pointer;
+} 
+.popup .context {
+padding-left:10px;
+} 
+.totalPopUp {
+float:right;
+padding-right:10px;
+} 
+.lBG {
+background:#f6f8f9;
+background:-moz-linear-gradient(top, #f6f8f9 0%, #e5ebee 50%, #d7dee3 51%, #f5f7f9 100%);
+background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f8f9), color-stop(50%,#e5ebee), color-stop(51%,#d7dee3), color-stop(100%,#f5f7f9));
+background:-webkit-linear-gradient(top, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+background:-o-linear-gradient(top, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+background:-ms-linear-gradient(top, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+background:linear-gradient(to bottom, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=0 );
+} 
+.block {
+display:block;
+} 
+#timeControl {
+line-height:1;
+} 
+#info span {
+color:#DDE53D;
+} 
+.addedContext {
+font-size:19px;
+} 
+.addedContext span {
+color:#DDE53D;
+} 
+.addedContext img {
+padding:0px 5px;
+} 
+.addedContext .removeTag {
+padding-right:15px;
+} 
+.arc path {
+stroke:#fff;
+} 
+#tagsvg {
+text-align:center;
+} 
+.tag {
+font-size:28px;
+color:#306999;
+} 
+.tagContext {
+border-bottom:1px solid #306999;
+} 
+#inContext,#outContext {
+padding-left:10px;
+} 
+.nodeInfo {
+font-size:14px;
+} 
+.tagHeader span {
+float:right;
+min-width:30px;
+margin-left:15px;
+text-align:right;
+} 
+#tagListing {
+font-size:16px;
+} 
+.tagHeader {
+font-size:22px;
+color:#306999;
+border-bottom:2px solid #306999;
+} 
+.linkList a {
+color:#000000;
+} 
+.singleLink {
+width:80%;
+overflow:hidden;
+} 
+.linkList {
+color:#000000;
+font-size:10px;
+line-height:2;
+border-bottom:2px solid #000000;
+margin-top:10px;
+padding:5px 10px 5px 10px;
+-moz-border-radius:0px 5px 5px 5px;
+-webkit-border-radius:0px 5px 5px 5px;
+border-radius:0px 5px 5px 5px;
+-khtml-border-radius:0px 5px 5px 5px;
+} 
+.linkList p {
+display:inline-block;
+} 
+.contextCount {
+text-align:right;
+float:right;
+min-width:50px;
+font-size:16px;
+line-height:1;
+} 
+.totalCount {
+text-align:right;
+padding-left:10px;
+float:right;
+min-width:50px;
+font-size:16px;
+line-height:1;
+} 
+.linkInfo {
+position:relative;
+} 
+.header {
+font-size:22px;
+margin-top:13px;
+} 
+.singleTweet {
+font-size:16px;
+padding:5px 10px 5px 10px;
+color:#000000;
+margin-top:10px;
+-moz-border-radius:0px 5px 5px 5px;
+-webkit-border-radius:0px 5px 5px 5px;
+border-radius:0px 5px 5px 5px;
+-khtml-border-radius:0px 5px 5px 5px;
+box-shadow:3px 8px 2px -5px #000000;
+padding-bottom:15px;
+} 
+.singleTweet a {
+color:#306999;
+} 
+.list {
+float:right;
+cursor:pointer;
+} 
+.singleUserSingleTweet {
+margin:10px 0px 10px 0px;
+border-bottom:2px solid #000000;
+font-size:12px;
+} 
+.axis path,
+.axis line {
+fill:none;
+stroke:#000;
+shape-rendering:crispEdges;
+} 
+.x.axis path {
+display:none;
+} 
+.line {
+fill:none;
+stroke:steelblue;
+stroke-width:1.5px;
+} 
+.circle {
+fill:steelblue;
+stroke:steelblue;
+} 

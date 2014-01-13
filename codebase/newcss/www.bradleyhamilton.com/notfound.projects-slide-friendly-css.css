@@ -1,0 +1,12 @@
+body {
+font-family:'archiv', Fallback, Gill Sans,sans-serif;
+} 
+.border {
+border:2px solid rgba(0,0,0,0.2);
+border-radius:8px 8px 8px 8px;
+-moz-border-radius:8px 8px 8px 8px;
+-webkit-border-radius:8px 8px 8px 8px;
+} 
+#slide-how-to > li {
+list-style:upper-roman outside none;
+} 

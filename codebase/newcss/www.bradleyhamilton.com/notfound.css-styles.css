@@ -1,0 +1,17 @@
+#imgMe {
+text-align:center;
+} 
+.container.projects > .row {
+margin-bottom:2%;
+} 
+.drudge p {
+padding:10px 0px 10px 0px;
+} 
+.drudge ul {
+margin:10px 0px 10px 10px;
+list-style-type:none;
+} 
+.drudge li {
+margin:5px;
+padding:5px;
+} 

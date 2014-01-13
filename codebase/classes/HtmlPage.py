@@ -39,7 +39,10 @@ class HtmlPage:
             try:
                 urlParts = urlparse(l['href'])
             except KeyError:
-                urlParts = urlparse(l['src'])
+                try:
+                    urlParts = urlparse(l['src'])
+                except KeyError:
+                    continue
 
 
             q = ''

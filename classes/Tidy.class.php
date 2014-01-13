@@ -7,7 +7,7 @@ class Tidy {
         $this->tc=$tc;
 
         if(count($_GET)==0){
-            $this->defaultForms();
+            //$this->defaultForms();
         }//if
 
         $this->tc->pushHTML('
@@ -19,13 +19,10 @@ class Tidy {
         $this->tc->pushHTML('
             <form id="do-tidy">
                 <label>URL</label>
-                </br>
-                <input type="text" length="100" name="url">
-                </br>
+                <input type="text" length="200" name="url">
                 <label>Only do a specific style sheet (optional)</label>
-                </br>
-                <input type="text" length="100" name="stylesheet">
-                <div id="submit-tidy">Tidy</div>
+                <input type="text" length="200" name="stylesheet">
+                <div id="submit-tidy"><div>Tidy</div></div>
             </form>
             ');
 

@@ -1,0 +1,13 @@
+#wrapper > div {
+width:45%;
+margin:1% 1%;
+padding:1% 1%;
+min-height:150px;
+float:left;
+} 
+#info > div {
+width:45%;
+margin:1% 1%;
+padding:1% 1%;
+float:left;
+} 

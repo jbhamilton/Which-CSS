@@ -1,0 +1,31 @@
+article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object {
+display:block;
+} 
+figure {
+position:relative;
+} 
+figure img {
+width:100%;
+} 
+.row .onecol {
+width:4.85%;
+} 
+.row .twocol {
+width:13.45%;
+} 
+.row .sevencol {
+width:56.75%;
+} 
+.row .ninecol {
+width:74.05%;
+} 
+.row .tencol {
+width:82.7%;
+} 
+.row .elevencol {
+width:91.35%;
+} 
+.row .twelvecol {
+width:100%;
+float:left;
+} 

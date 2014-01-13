@@ -181,6 +181,18 @@ width:98%;
 input[type=text] {
 padding:3px;
 } 
+input#s {
+background:url(images/search.png) no-repeat 5px 6px;
+-moz-border-radius:2px;
+border-radius:2px;
+font-size:14px;
+height:22px;
+line-height:1.2em;
+padding:4px 10px 4px 28px;
+} 
+input#searchsubmit {
+display:none;
+} 
 a {
 color:#333;
 text-decoration:none;
@@ -303,6 +315,17 @@ display:none;
 .entry-summary {
 padding:0em 0 0;
 } 
+.entry-content h1,
+.entry-content h2,
+.comment-content h1,
+.comment-content h2 {
+color:#000;
+font-weight:bold;
+margin:0 0 .8125em;
+} 
+.entry-content #s {
+width:75%;
+} 
 .page-link a:hover {
 background:#888;
 color:#fff;
@@ -313,10 +336,25 @@ font-weight:bold;
 background:#888;
 color:#fff;
 } 
+.entry-content img,
+.comment-content img,
+.widget img {
+max-width:97.5%;
+} 
 img[class*="align"],
 img[class*="wp-image-"],
 img[class*="attachment-"] {
 height:auto;
+} 
+.entry-content img.wp-smiley {
+border:none;
+margin-bottom:0;
+margin-top:0;
+padding:0;
+} 
+p img,
+.wp-caption {
+margin-top:0.4em;
 } 
 .wp-caption .wp-caption-text:before {
 color:#666;
@@ -453,6 +491,12 @@ float:none;
 margin-right:0;
 width:100%;
 } 
+.error404 .widgettitle {
+font-size:10px;
+letter-spacing:0.1em;
+line-height:2.6em;
+text-transform:uppercase;
+} 
 article.intro .edit-link a:hover,
 article.intro .edit-link a:focus,
 article.intro .edit-link a:active {
@@ -529,6 +573,12 @@ padding:0 0 1.625em;
 font-size:12px;
 font-weight:bold;
 line-height:2.2em;
+} 
+#nav-above {
+padding:0 0 1.625em;
+} 
+#nav-above {
+display:none;
 } 
 .paged #nav-above {
 display:block;
