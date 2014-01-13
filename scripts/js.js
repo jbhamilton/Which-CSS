@@ -1,4 +1,3 @@
-var endPoint='http://tidymycss.localhost/';
 var tidyUrl = '';
 
 $(document).ready(function(){

@@ -3,7 +3,7 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 
-class templateControl {
+class TemplateControl {
     public $ctrl;
     public $html = Array();
     public $scripts = Array();
@@ -18,6 +18,9 @@ class templateControl {
         $this->title = "Clean up your CSS - Find used selectors, generate new CSS files | TidyMyCSS";
         $this->description = "'CSS cleaning'";
 
+        //add the working path to the javascript file
+        //so we are consistent
+        $this->pushScript('var endPoint='.$this->path.';');
 
     }//construct
 
