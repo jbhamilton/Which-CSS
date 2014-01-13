@@ -15,7 +15,7 @@ class TemplateControl {
 
     public function __construct($ctrl=null){
         $this->ctrl = $ctrl;
-        $this->title = "Clean up your CSS - Find used selectors, generate new CSS files | TidyMyCSS";
+        $this->title = "Clean up your CSS - Find used selectors, generate new CSS files | Which CSS";
         $this->description = "'CSS cleaning'";
 
         //add the working path to the javascript file
