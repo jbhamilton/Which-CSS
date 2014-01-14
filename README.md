@@ -31,5 +31,5 @@ all available using <code>pip install packagename</code></p>
 <h3>Output</h3>
 <p>Ouput lives in the directory <code>codebase/newcss/yoursiteurl.com/</code></p>
 <p>Contained in that folder is a file called <code>output.html</code> and all css files found on your site but in
-two verisions one prefixed with the name </code>.found</code> for the styles that were found, and one prefixed
+two verisions one prefixed with the name <code>.found</code> for the styles that were found, and one prefixed
 <code>.notfound</code> for the styles that weren't found.</p>
