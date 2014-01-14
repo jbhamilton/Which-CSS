@@ -23,8 +23,8 @@ all available using <code>pip install packagename</code></p>
 <h6>Command line</h6>
 <code>python codebase/parse.py http://wwww.website.com</code>
 <h6>Web interface</h6>
-<p>Get the code in the a directory your webserver can run on localhost.</p>
-<p>Setup a supdomain to point to <code>/path/Which-CSS/</code> with a subdomain <code>whichcss.localhost</code></p>
+<p>Get the code in a directory your webserver can run on localhost.</p>
+<p>Setup a subdomain to point to <code>/path/Which-CSS/</code> with a subdomain <code>whichcss.localhost</code></p>
 <p>Install/Enable <code>X-Sendfile</code></p>
 
 
