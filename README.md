@@ -7,12 +7,28 @@
     <li>Click run and wait for the scraping to be done</li>
 </ol>
 <p>The program is written in python and lives in the direcotry <code>codebase/</code></p>
-<h2>Python Dependencies</h2>
+<h3>Python Dependencies</h3>
 <ul>
     <li>Python2.7 or greater</li>
     <li>BeautifulSoup</li>
     <li>tinycss</li>
     <li>soupselect</li>
 </ul>
-<aside>These are included but can be removed if you have them installed or wish to install them instead. They are
-all available using pip install packagename </aside>
+<p>These are included but can be removed if you have them installed or wish to install them instead. They are
+all available using <code>pip install packagename</code></p>
+
+</br>
+<h3>Running the script</h3>
+<h6>Command line</h6>
+<code>python codebase/parse.py http://wwww.website.com</code>
+<h6>Web interface</h6>
+<p>Get the code in the a directory your webserver can run on localhost.</p>
+<p>Setup a supdomain to point to <code>/path/Which-CSS/</code> with a subdomain <code>whichcss.localhost</code></p>
+<p>Install/Enable <code>X-Sendfile</code></p>
+
+
+<h3>Output</h3>
+<p>Ouput lives in the directory <code>codebase/newcss/yoursiteurl.com/</code></p>
+<p>Contained in that folder is a file called <code>output.html</code> and all css files found on your site but in
+two verisions one prefixed with the name </code>.found</code> for the styles that were found, and one prefixed
+<code>.notfound</code> for the styles that weren't found.</p>

@@ -11,7 +11,7 @@ class TemplateControl {
     public $title;
     public $description;
     public $currentPage;
-    public $path = 'http://tidymycss.localhost/';
+    public $path = 'http://whichcss.localhost/';
 
     public function __construct($ctrl=null){
         $this->ctrl = $ctrl;
@@ -20,7 +20,7 @@ class TemplateControl {
 
         //add the working path to the javascript file
         //so we are consistent
-        $this->pushScript('var endPoint='.$this->path.';');
+        $this->pushScript('var endPoint="'.$this->path.'";');
 
     }//construct
 
